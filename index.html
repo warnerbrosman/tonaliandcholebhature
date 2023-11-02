@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .top-banner {
+  width: 100%;
+  height: 450px;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-banner img {
+  width: auto;
+  height: 150%;
+}
+
+    .event-title h1 {
+      text-align: center;
+      font-size: 3em;
+      margin: 10px 0;
+    }
+
+    .primary-timer {
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .primary-timer h2 {
+      font-size: 3em;
+      font-weight: bold;
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .primary-timer p {
+      text-align: center;
+      font-size: 1.5em;
+      margin: 10px 0;
+    }
+
+    .context-text p {
+      font-size: 1.5em;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .mini-trackers {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .tracker {
+  width: 100%;
+  max-width: 800px;
+  min-height: 550px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tracker p {
+  font-size: 2em;
+}
+
+
+    .gif {
+      width: 100%;
+      height: auto;
+      min-height: 550px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .tracker {
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-banner">
+    <img src="https://ik.imagekit.io/qqtatwor2/ezgif-5-92105a2236.gif?updatedAt=1698886333078" alt="Top Banner" class="banner-image">
+  </div>
+
+
+<div class="event-title">
+  <h1>🥳 #TonaliKiShaadi🎉</h1>
+</div>
+
+<div class="primary-timer">
+  <h2 id="primary-timer-text"></h2>
+  <p>To the big day </p>
+</div>
+
+<div class="context-text">
+  <p>Tanu ditches chole bhature for Sonali 🥳</p>
+</div>
+
+<div class="context-text">
+  <p>After years of epic cravings and fierce dosas, the results are finally in... TONALI scores a resounding <strong>💪 1 - 0 💪</strong> victory over Chole Bhature, who's left with a big fat zero! 🥳</p>
+</div>
+
+<div class="primary-timer">
+    <h2 id="primary-timer-text-2"></h2>
+    <p>Tentative scenes of the day... </p>
+  </div>
+
+<div class="mini-trackers" id="mini-tracker-container">
+</div>
+
+<script>
+const mainEventDate = new Date('2023-12-08T18:00:00Z');
+
+  const miniTrackers = [
+    {
+      text: 'Mehra attempts mehmaan nawaazi (in spanish) #puta',
+      gifUrl: 'https://media1.giphy.com/media/3o6MbgKxkbC0uKauA0/giphy.gif?cid=ecf05e4747b0hthxfajxyeh5lrg84jdmh7etnzfwwn3elxsr&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 30,
+    },
+    {
+      text: 'Rishabh himalayan water sabko slip karte hue',
+      gifUrl: 'https://media3.giphy.com/media/l46Ct9TvMi5YgYjQY/giphy.gif?cid=ecf05e47tj9i29iokdwvdsxte1jxjmixfzz0abr10o7yrv7w&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 50,
+    },
+    {
+      text: 'Manu randomly shows off his dance moves and then hides in shame...',
+      gifUrl: 'https://media0.giphy.com/media/A2GTOd58HXnGuWR7JB/giphy.gif?cid=ecf05e47hmdtnwkl8kwvq69injrudz0fghwknwq893yf9evi&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 80,
+    },
+    {
+      text: 'Priyanka - "Camera man kaha gaya? "',
+      gifUrl: 'https://media2.giphy.com/media/4Zd5CCT47enl32Sx3P/200w.webp?cid=ecf05e47vc9z7jbx1ekcmh13mnu7zee1c2pk7u56tle70tzi&ep=v1_gifs_search&rid=200w.webp&ct=g',
+      minutesOffset: 90,
+    },
+    {
+      text: 'Tanu ke mid wedding chole bhature urges..',
+      gifUrl: 'https://media2.giphy.com/media/Tk7mR5exjew4FnKqfE/giphy.gif?cid=ecf05e47hqq1gdm8f04a60t2txumsvwj39eh3euhm0v8gp3f&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 150,
+    },
+    {
+      text: 'Sonali waiting kab Tanu mereko bhaga ke lejayega ',
+      gifUrl: 'https://media2.giphy.com/media/TR3abToJDTBII/giphy.gif?cid=ecf05e47ekg0x55jszjzo9fvzhemu3d0qocz3xu572c705h9&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 180,
+    },
+    {
+      text: 'Priyanka posing for a photo...',
+      gifUrl: 'https://media1.giphy.com/media/Y6OZ4lLBFGiai3pRFk/giphy.gif?cid=ecf05e47hqq1gdm8f04a60t2txumsvwj39eh3euhm0v8gp3f&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 190,
+    },
+    {
+      text: 'Manu going dark for the 11th time to style his hair',
+      gifUrl: 'https://media1.giphy.com/media/jUwpNzg9IcyrK/200.webp?cid=ecf05e47svirwgawr0q4k0jg7f6v4z70ccv8ap3f5yxec0m2&ep=v1_gifs_search&rid=200.webp&ct=g',
+      minutesOffset: 230,
+    },
+    {
+      text: 'Mehra seacrhing for guests to explain he is a ryder',
+      gifUrl: 'https://media1.giphy.com/media/xji6UKmOkQtQk/200w.webp?cid=ecf05e47h8eosxa2k66wihvlpi6d5zxz6moyslcqfln69kj2&ep=v1_gifs_search&rid=200w.webp&ct=g',
+      minutesOffset: 250,
+    },
+    {
+      text: 'Uncle/Aunties Tonali ko ashirwaard dete hue - "Bachhe time se karlena"',
+      gifUrl: 'https://media3.giphy.com/media/2tOuH8XijL9mgnl2Qc/giphy.gif?cid=ecf05e47vf6aonz41sqjx6s85lgg5e5b02dan6sfd2l7rz8d&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 300,
+    },
+    {
+      text: 'Rishabh ka himalayan water works.. ',
+      gifUrl: 'https://media1.giphy.com/media/z4CAgfIILQ51ORrtup/200w.webp?cid=ecf05e47h8eosxa2k66wihvlpi6d5zxz6moyslcqfln69kj2&ep=v1_gifs_search&rid=200w.webp&ct=g',
+      minutesOffset: 300,
+    },
+    {
+      text: 'Pandit ji throwing rituals at Sonali...',
+      gifUrl: 'https://media3.giphy.com/media/FeFVaCaun5Yt2/giphy.gif?cid=ecf05e47vozmr9ewm3f62b9ehbyb5qhhhlbh73n6nmre785c&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 350,
+    },
+    {
+      text: 'Tanu being possessive right after pheres...',
+      gifUrl: 'https://media1.giphy.com/media/F6JZI95iOg3XVGuhOE/giphy.gif?cid=ecf05e474zl7b3k8g2owl252yjal7elvqe6xygs428ol950d&ep=v1_gifs_related&rid=giphy.gif&ct=g',
+      minutesOffset: 450,
+    },
+    {
+      text: 'Woooooooooooooo....',
+      gifUrl: 'https://media0.giphy.com/media/3o6Zt0Rfjy0ePJmYEw/giphy.gif?cid=ecf05e47vozmr9ewm3f62b9ehbyb5qhhhlbh73n6nmre785c&ep=v1_gifs_search&rid=giphy.gif&ct=g',
+      minutesOffset: 500,
+    },
+  ];
+
+  function updatePrimaryTimer() {
+    const now = new Date();
+    const timeRemaining = mainEventDate - now;
+    const daysRemaining = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+    const hoursRemaining = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+    const secondsRemaining = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+    const timerText = document.getElementById('primary-timer-text');
+    timerText.textContent = `${daysRemaining}d ${hoursRemaining}h ${minutesRemaining}m ${secondsRemaining}s`;
+  }
+  setInterval(updatePrimaryTimer, 1000);
+
+  function updateMiniTrackers() {
+    const now = new Date();
+    const container = document.getElementById('mini-tracker-container');
+    container.innerHTML = '';
+
+    miniTrackers.forEach(tracker => {
+      const timeRemaining = mainEventDate - now;
+      const secondsRemaining = Math.floor(timeRemaining / 1000);
+      const countdown = secondsRemaining - (tracker.minutesOffset * 60);
+      if (countdown >= 0) {
+        const div = document.createElement('div');
+        div.className = 'tracker';
+        div.innerHTML = `
+          <p>${tracker.text}</p>
+          <img src="${tracker.gifUrl}" alt="${tracker.text}" class="gif">
+          <p>in ${countdown} seconds</p>
+        `;
+        container.appendChild(div);
+      }
+    });
+  }
+  setInterval(updateMiniTrackers, 1000);
+</script>
+
+</body>
+</html>
